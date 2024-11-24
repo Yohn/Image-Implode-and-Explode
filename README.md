@@ -1,5 +1,7 @@
 # ImgPiecer - Dynamic Image Animation Library
 
+## [Check out the Demo](https://yohn.github.io/ImgPiecer/index.html)
+
 A lightweight JavaScript library for creating stunning image animations with customizable piece-by-piece effects.
 
 ## Installation
