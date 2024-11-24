@@ -53,7 +53,7 @@
 				<div class="settings">
 					<div class="row-fluid">
 						<div class="col-6 offset-3">
-								<label for="opacity" style="display: block; width:75%; margin: auto;";>
+								<label for="opacity" style="display: block; width:75%; margin: auto;">
 									<span style="float:left">Initial Opacity:</span>
 									<span style="float:right" id="opacityValue">0</span>
 									<span style="clear:both"></span>
@@ -135,7 +135,7 @@
 			let animator;
 			let container = document.getElementById("demo1");
 			function initializeAnimator() {
-				animator = new ImagePieceAnimator(container, {
+				animator = new ImgPiecer(container, {
 					imageUrl: imageUrl,
 					rows: 5,
 					columns: 5,
@@ -149,7 +149,7 @@
 			document.getElementById('opacity').addEventListener('input', function(e) {
 				document.getElementById('opacityValue').textContent = e.target.value;
 				container.innerHTML = "";
-				animator = new ImagePieceAnimator(container, {
+				animator = new ImgPiecer(container, {
 					imageUrl: imageUrl,
 					rows: 5,
 					columns: 5,
