@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="color-scheme" content="light dark" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/yohn/picocss/css/pico.min.css" />
+		<title>Image Piece Animator Demo</title>
+		<style>
+			:root {
+				--pico-spacing: .4rem;
+			}
+			/* Hide horizontal scrollbar but keep vertical */
+			body {
+				overflow-x: hidden;
+			}
+			/* Hide scrollbars while maintaining layout */
+			body.animating {
+				overflow: hidden !important;
+			}
+			.demo-section {
+				padding: 10px;
+				border-radius: 8px;
+				margin: 20px 0;
+			}
+			.image-container {
+				margin: 20px auto;
+			}
+			.image-piece {
+				position: absolute;
+				transition: transform 0.5s ease-out;
+			}
+			.t-r {text-align:right;}
+			.t-c {text-align: center;}
+			h1 {text-align: center;}
+			img {max-width:100%;}
+			button {padding:.5rem .75rem;}
+			.settings input[type="range"] {
+				width: 200px;
+				margin: 0 1rem;
+				vertical-align: middle;
+			}
+			article {max-width:650px; margin:0 auto;}
+		</style>
+	</head>
+	<body class="container-fluid">
+		<br />
+		<article>
+			<header>
+				<h1>Image Piece Animator Demo</h1>
+			</header>
+			<div class="demo-section">
+				<div class="settings">
+					<div class="row-fluid">
+						<div class="col-6 offset-3">
+								<label for="opacity" style="display: block; width:75%; margin: auto;";>
+									<span style="float:left">Initial Opacity:</span>
+									<span style="float:right" id="opacityValue">0</span>
+									<span style="clear:both"></span>
+								</label>
+							<input type="range" id="opacity" min="0" max="1" step="0.1" value="0">
+						</div>
+						<div class="col-12 col-xs-6">
+							<label>
+								<input type="checkbox" id="spin"> Enable Spinning
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="row-fluid">
+					<div class="col-6 t-r">
+						<button onclick="go2('left')">Animate from Left</button>
+					</div>
+					<div class="col-6">
+						<button onclick="go2('top')">Animate from Top</button>
+					</div>
+					<div class="col-6 t-r">
+						<button onclick="go2('bottom')">Animate from Bottom</button>
+					</div>
+					<div class="col-6">
+						<button onclick="go2('right')">Animate from Right</button>
+					</div>
+					<div class="col-6 t-r">
+						<button onclick="go2('curtain-left')">Curtain from Left</button>
+					</div>
+					<div class="col-6">
+						<button onclick="go2('curtain-top')">Curtain from Top</button>
+					</div>
+					<div class="col-6 t-r">
+						<button onclick="go2('curtain-bottom')">Curtain from Bottom</button>
+					</div>
+					<div class="col-6">
+						<button onclick="go2('curtain-right')">Curtain from Right</button>
+					</div>
+					<div class="col-3 t-c">
+						<button onclick="go2('shutter')">Shutter</button>
+					</div>
+					<div class="col-3 t-c">
+						<button onclick="go2('domino')">Domino</button>
+					</div>
+					<div class="col-3 t-c">
+						<button onclick="go2('spiral')">Spiral</button>
+					</div>
+					<div class="col-3 t-c">
+						<button onclick="go2('vortex')">Vortex</button>
+					</div>
+					<div class="col-4 t-c">
+						<button onclick="go2('grow-out')">Grow Out</button>
+					</div>
+					<div class="col-4 t-c">
+						<button onclick="go2('wave')">Wave</button>
+					</div>
+					<div class="col-4 t-c">
+						<button onclick="go2('explode')">Explode</button>
+					</div>
+					<div class="col-4 t-c">
+						<button onclick="go2('grow-in')">Grow In</button>
+					</div>
+					<div class="col-4 t-c">
+						<button onclick="go2('hypno')">Hypnotic Spiral</button>
+					</div>
+					<div class="col-4 t-c">
+						<button onclick="go2('implode')">Implode</button>
+					</div>
+				</div>
+				<div id="demo1" class="image-container"></div>
+			</div>
+		</article>
+
+		<script src="./ImgPiecer.js"></script>
+		<script>
+			// Demo image URL - replace with your actual image
+			const imageUrl = "https://picsum.photos/500/300";
+
+			let animator;
+			let container = document.getElementById("demo1");
+			function initializeAnimator() {
+				animator = new ImagePieceAnimator(container, {
+					imageUrl: imageUrl,
+					rows: 5,
+					columns: 5,
+					animationDuration: 1,
+					initialOpacity: 0,
+					spin: document.getElementById('spin').checked
+				});
+			}
+
+			// Update opacity value display and reinitialize animator
+			document.getElementById('opacity').addEventListener('input', function(e) {
+				document.getElementById('opacityValue').textContent = e.target.value;
+				container.innerHTML = "";
+				animator = new ImagePieceAnimator(container, {
+					imageUrl: imageUrl,
+					rows: 5,
+					columns: 5,
+					animationDuration: 1,
+					initialOpacity: parseFloat(e.target.value),
+					spin: document.getElementById('spin').checked
+				});
+			});
+
+			function go2(direction) {
+				container.innerHTML = "";
+				animator.direction = direction;
+				animator.spin = document.getElementById('spin').checked;
+				animator.animate();
+			}
+
+			// Initialize the animator when the page loads
+			window.addEventListener("load", initializeAnimator);
+		</script>
+	</body>
+</html>
