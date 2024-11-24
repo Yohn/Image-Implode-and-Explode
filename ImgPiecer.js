@@ -1,4 +1,4 @@
-class Plax {
+class ImgPiecer {
   constructor(container, options = {}) {
     this.container = container;
     this.options = Object.assign({
