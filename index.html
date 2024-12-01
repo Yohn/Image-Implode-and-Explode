@@ -92,16 +92,16 @@
 					<div class="col-6">
 						<button onclick="go2('curtain-right')">Curtain from Right</button>
 					</div>
-					<div class="col-3 t-c">
+					<div class="col-4 t-c">
 						<button onclick="go2('shutter')">Shutter</button>
 					</div>
-					<div class="col-3 t-c">
+					<div class="col-4 t-c">
 						<button onclick="go2('domino')">Domino</button>
 					</div>
-					<div class="col-3 t-c">
+					<div class="col-4 t-c">
 						<button onclick="go2('spiral')">Spiral</button>
 					</div>
-					<div class="col-3 t-c">
+					<div class="col-4 t-c">
 						<button onclick="go2('vortex')">Vortex</button>
 					</div>
 					<div class="col-4 t-c">
@@ -111,13 +111,10 @@
 						<button onclick="go2('wave')">Wave</button>
 					</div>
 					<div class="col-4 t-c">
-						<button onclick="go2('explode')">Explode</button>
-					</div>
-					<div class="col-4 t-c">
 						<button onclick="go2('grow-in')">Grow In</button>
 					</div>
 					<div class="col-4 t-c">
-						<button onclick="go2('hypno')">Hypnotic Spiral</button>
+						<button onclick="go2('explode')">Explode</button>
 					</div>
 					<div class="col-4 t-c">
 						<button onclick="go2('implode')">Implode</button>
@@ -127,10 +124,11 @@
 			</div>
 		</article>
 
-		<script src="./ImgPiecer.js"></script>
+		<!--<script src="https://cdn.jsdelivr.net/gh/Yohn/ImgPiecer@latest/ImgPiecer.min.js"></script>-->
+		<script src="ImgPiecer.js"></script>
 		<script>
 			// Demo image URL - replace with your actual image
-			const imageUrl = "https://picsum.photos/500/300";
+			const imageUrl = "http://127.0.0.1:3002/assets/img/jpg/pexels-cannafornia-3792919-5810787.jpg";
 
 			let animator;
 			let container = document.getElementById("demo1");
